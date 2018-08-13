@@ -10,7 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
+/**
+ * 
+ * @author joseph
+ */
 public class CommPanel extends JPanel {
     
     private ChatMessage[] chat;
@@ -44,6 +47,10 @@ public class CommPanel extends JPanel {
         scroll.setAutoscrolls(true);
     }
     
+    /**
+     * 
+     * @param cm
+     */
     public void displayChatMessage(ChatMessage cm) {
         if(cm.getMessage().equals("")) {
             return;
