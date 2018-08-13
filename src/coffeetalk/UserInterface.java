@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -41,11 +43,17 @@ public class UserInterface  {
 		JButton startButton;
 		startButton = new JButton("Start");
 		
+		window.add(startButton);
+		
+
+		//set button size
+		startButton.setMaximumSize(maximumSize);
+		
+		//200 65
+		
+	
 		//makes startbutton actually appear. W O A H
 		startButton.setVisible(true);
-		
-		//set button size
-		startButton.setSize(200, 65);
 	
 
 		
