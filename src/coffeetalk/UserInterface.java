@@ -70,7 +70,5 @@ public class UserInterface  {
 		window.setVisible(true);
 	}
 	
-	public void loadPage() {
-		
-	}
+
 }
