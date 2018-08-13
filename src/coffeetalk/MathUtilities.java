@@ -14,9 +14,9 @@ public class MathUtilities {
 	public static Theme[] getThemes() {
 		Theme[] themes = null;
 		try {
-			Scanner s = new Scanner(new FileInputStream("themes.txt"));
-			while(s.hasNext()) {
-				String line = s.nextLine();
+			Scanner scanner = new Scanner(new FileInputStream("themes.txt"));
+			while(scanner.hasNext()) {
+				String line = scanner.nextLine();
 				String name = line.substring(0, line.indexOf("|"));
 				line = line.substring(line.indexOf("|") + 1);
 				
@@ -32,6 +32,8 @@ public class MathUtilities {
 				themes = extendThemes(themes);
 				themes[themes.length - 1] = new Theme(name, p, s, a);
 			}
+			scanner.close();
+			
 		} catch (FileNotFoundException e) {
 			System.exit(0);
 		}
