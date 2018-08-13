@@ -14,7 +14,7 @@ public class MathUtilities {
 	public static Theme[] getThemes() {
 		Theme[] themes = null;
 		try {
-			Scanner scanner = new Scanner(new FileInputStream("themes.txt"));
+			Scanner scanner = new Scanner(new FileInputStream("data/themes.txt"));
 			while(scanner.hasNext()) {
 				String line = scanner.nextLine();
 				String name = line.substring(0, line.indexOf("|"));

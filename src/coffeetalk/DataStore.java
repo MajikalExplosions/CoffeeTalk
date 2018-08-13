@@ -1,6 +1,8 @@
 package coffeetalk;
 
-public class DataStore {
+import java.io.Serializable;
+
+public class DataStore implements Serializable {
 	public String username;
 	public Theme[] themes;
 	public int port;
@@ -11,9 +13,5 @@ public class DataStore {
 		44,
 		-56
 	};
-	
-	
-	
-	
-	
+	public int currentTheme = -1;
 }
