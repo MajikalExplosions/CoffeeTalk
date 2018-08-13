@@ -1,0 +1,5 @@
+Sepia|9f7e69|d2bba0|f7f0e0
+Dark|222222|505050|d1d1d1
+Ocean Blue|304d6d|82a0bc|c5d5ea
+Unicorn|7a69c6|c7b9ee|ffb2e9
+High Contrast|0000ff|00ff00|ff0000

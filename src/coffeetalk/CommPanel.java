@@ -20,6 +20,7 @@ public class CommPanel extends JPanel {
     private JTextArea history;
     private JTextField input;
     private Socket socket;
+    private String name;
     /**
      * @param h history panel
      * @param i input panel
@@ -27,8 +28,12 @@ public class CommPanel extends JPanel {
      * @param n name of user
      */
     public CommPanel(JTextArea h, JTextField i, String n) {
-        //Start by setting text fields to what they need to be
-        input.setEditable(true);
+        
+        
+        //Add names and things
+        history = h;
+        input = i;
+        name = n;
         
         input.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -41,6 +46,7 @@ public class CommPanel extends JPanel {
         history.setEditable(false);
         history.setLineWrap(true);
         history.setWrapStyleWord(true);
+        input.setEditable(true);
         
         //Add scrolling bar at the side
         JScrollPane scroll = new JScrollPane(history);
@@ -145,8 +151,7 @@ public class CommPanel extends JPanel {
                 chat.displayChatMessage(new ChatMessage("[Server]", "Connected!"));
             }
             catch (Exception e) {
-                System.out.println(e.getMessage());
-                System.exit(0);
+            	chat.displayChatMessage(new ChatMessage("[Server]", "Error connecting to server."));
             }
         }
     }
