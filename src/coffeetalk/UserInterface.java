@@ -60,6 +60,7 @@ public class UserInterface  {
 	        });
 			
 			window.add(input);
+			window.add(submit);
 			break;
 		default:
 			//the heck why's it here
