@@ -21,4 +21,4 @@ public class ChatMessage implements java.io.Serializable {
     public String getSender() {
         return sender;
     }
-    
+}
