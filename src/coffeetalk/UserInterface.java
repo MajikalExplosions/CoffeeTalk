@@ -53,7 +53,7 @@ public class UserInterface  {
 			submit.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (! name.getText().equals("")) {
-	            		data.name = name.getText();
+	            		data.username = name.getText();
 	            		startPage(Page.Encoder);
 	            	}
 	            }
