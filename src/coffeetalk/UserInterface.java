@@ -40,7 +40,7 @@ public class UserInterface  {
 		
 
 		//set button size
-		startButton.setMaximumSize(maximumSize);
+		//startButton.setMaximumSize(maximumSize);
 		
 		//200 65
 		
