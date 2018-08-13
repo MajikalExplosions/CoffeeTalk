@@ -4,8 +4,10 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class UserInterface {
+public class UserInterface  {
 	
 	JFrame window;
 	
@@ -27,26 +29,38 @@ public class UserInterface {
         
       //Show Window
         window.setVisible(true);
-        
-        
-        
-        
-       
+     
 	}
 	
+	
+//Method Divider cuz oRgAnIsAtIoN	
 	
 	public void startPage() {
 		
-		
+		//Init stuff
 		JButton startButton;
 		startButton = new JButton("Start");
 		
-		
-		
+		//Button trigger
+		startButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                
+            	
+            	//Goes to the encoder/decoder only page (not messenger)
+            	offlinePage();
+            	
+            }
+        });		
 		
 	}
 	
+//Method Divider cuz oRgAnIsAtIoN	
 	
+	
+	public void offlinePage() {
+		
+		
+	}
 	
 	
 }
