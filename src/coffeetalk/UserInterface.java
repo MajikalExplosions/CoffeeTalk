@@ -26,7 +26,6 @@ public class UserInterface  {
 	}
 	
 	public void startPage(Page p) {
-		window.removeAll();
 		
 		switch(p) {
 		case Encoder:
@@ -66,7 +65,6 @@ public class UserInterface  {
 			//the heck why's it here
 			break;
 		}
-		
 		window.setVisible(true);
 	}
 	
