@@ -41,10 +41,25 @@ public class UserInterface  {
 		JButton startButton;
 		startButton = new JButton("Start");
 		
+		//makes startbutton actually appear. W O A H
+		startButton.setVisible(true);
+		
+		//set button size
+		startButton.setSize(200, 65);
+	
+
+		
 		//Button trigger
 		startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 
+            	
+            	//Terminates everything on window, and restores it to blank state
+            	window.removeAll();
+            	window.setVisible(true);
+                window.setSize(450, 650);
+               
+            	
             	
             	//Goes to the encoder/decoder only page (not messenger)
             	offlinePage();
@@ -58,6 +73,7 @@ public class UserInterface  {
 	
 	
 	public void offlinePage() {
+		
 		
 		
 	}
