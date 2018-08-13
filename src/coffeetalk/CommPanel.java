@@ -137,11 +137,12 @@ public class CommPanel extends JPanel {
     	public void run() {
             try {
                 while(chat.getChatLength() == 1) {
-                    System.out.print("");
                 }
                 String ip = chat.getChat()[1].getMessage();
                 ip += ":58541";
+                chat.displayChatMessage(new ChatMessage("[Server]", "Attempting to connect to the server..."));
                 socket = new Socket(ip.substring(0, ip.indexOf(":")), Integer.parseInt(ip.substring(ip.indexOf(":") + 1)));
+                chat.displayChatMessage(new ChatMessage("[Server]", "Connected!"));
             }
             catch (Exception e) {
                 System.out.println(e.getMessage());
