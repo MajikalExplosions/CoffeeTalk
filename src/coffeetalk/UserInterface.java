@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 public class UserInterface  {
 	
 	JFrame window;
+	DataStore data;
 	
 	public void InitialiseWindow() {
 		
@@ -20,42 +22,54 @@ public class UserInterface  {
 		//I don't like background programs.
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        //Sets Window Size
-        window.setSize(450, 650);
-        
-        startPage();
+        startPage(Page.Start);
 	}
 	
-	public void startPage() {
+	public void startPage(Page p) {
+		window.removeAll();
 		
-		//Init stuff
-		JButton startButton;
-		startButton = new JButton("Start");
+		switch(p) {
+		case Encoder:
+			//Encoder Page
+			break;
+		case Messenger:
+			//Messenger Page
+			break;
+		case Settings:
+			//Settings Page
+			break;
+		case Start:
+			//Start Page
+			window.setSize(200, 100);
+			window.setLayout(new java.awt.GridLayout(2, 1));
+			
+			JButton submit = new JButton("Start");
+			JPanel input = new JPanel();
+			input.setLayout(new java.awt.GridLayout(1, 2));
+			input.add(new JLabel("Username"));
+			JTextField name = new JTextField();
+			input.add(name);
+			
+			submit.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	if (! name.getText().equals("")) {
+	            		data.name = name.getText();
+	            		startPage(Page.Encoder);
+	            	}
+	            }
+	        });
+			
+			window.add(input);
+			break;
+		default:
+			//the heck why's it here
+			break;
+		}
 		
-		window.add(startButton);
-		
-		//makes startbutton actually appear. W O A H
-		startButton.setVisible(true);
-		
-		//Button trigger
-		startButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	//Terminates everything on window, and restores it to blank state
-            	window.removeAll();
-            	window.setVisible(true);
-                window.setSize(450, 650);
-            	offlinePage();
-            	
-            }
-        });		
-		
+		window.setVisible(true);
 	}
 	
-	public void offlinePage() {
-		
-		
+	public void loadPage() {
 		
 	}
-	
-	
 }
