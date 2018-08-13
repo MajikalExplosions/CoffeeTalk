@@ -21,17 +21,10 @@ public class UserInterface  {
 		//I don't like background programs.
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        //Set JFrame Size and Layout(CHANGE THESE, THEY EXAMPLES)
-        //window.setLayout(new java.awt.GridLayout(4, 2));  
-        
-        //Set JFrame Size
+        //Sets Window Size
         window.setSize(450, 650);
         
         startPage();
-        
-      //Show Window
-        window.setVisible(true);
-     
 	}
 	
 	
