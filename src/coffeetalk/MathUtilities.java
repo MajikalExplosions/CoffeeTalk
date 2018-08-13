@@ -23,14 +23,14 @@ public class MathUtilities {
 				Color p = new Color(getRGB(line.substring(0, 2)), getRGB(line.substring(2, 4)), getRGB(line.substring(4, 6)), 0);
 				line = line.substring(7);
 				
-				Color s = new Color(getRGB(line.substring(0, 2)), getRGB(line.substring(2, 4)), getRGB(line.substring(4, 6)), 0);
+				Color s2 = new Color(getRGB(line.substring(0, 2)), getRGB(line.substring(2, 4)), getRGB(line.substring(4, 6)), 0);
 				line = line.substring(7);
 				
 				Color a = new Color(getRGB(line.substring(0, 2)), getRGB(line.substring(2, 4)), getRGB(line.substring(4, 6)), 0);
 				
 				
 				themes = extendThemes(themes);
-				themes[themes.length - 1] = new Theme(name, p, s, a);
+				themes[themes.length - 1] = new Theme(name, p, s2, a);
 			}
 		} catch (FileNotFoundException e) {
 			System.exit(0);
