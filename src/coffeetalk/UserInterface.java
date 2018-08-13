@@ -7,6 +7,15 @@ import javax.swing.JLabel;
 
 public class UserInterface {
 
+	public void InitialiseWindow() {
+		
+		
+		
+		
+		
+		
+	}
+	
 	
 	
 	
