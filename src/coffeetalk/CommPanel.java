@@ -12,11 +12,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 /**
  * 
- * @author joseph
+ * @author MajikalExplosions
  */
 public class CommPanel extends JPanel {
     
-    private ChatMessage[] chat;
+    private Chat chat;
     private JTextArea history;
     private JTextField input;
     private Socket socket;
@@ -26,113 +26,89 @@ public class CommPanel extends JPanel {
      * @param s socket with server connection
      * @param n name of user
      */
-    public CommPanel(JTextArea h, JTextField i, Socket s, String n) {
+    public CommPanel(JTextArea h, JTextField i, String n) {
         //Start by setting text fields to what they need to be
         input.setEditable(true);
         
         input.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                addChatMessage(new ChatMessage(n, input.getText()));
+                chat.addChatMessage(new ChatMessage(n, input.getText()));
                 input.setText("");
             }
         });
         
+        //Make history like chat history
         history.setEditable(false);
         history.setLineWrap(true);
         history.setWrapStyleWord(true);
         
+        //Add scrolling bar at the side
         JScrollPane scroll = new JScrollPane(history);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scroll.setAutoscrolls(true);
+        
+        //Attempt to connect to the server.
+        CommInitializer initComm = new CommInitializer();
+        initComm.start();
+        chat.displayChatMessage(new ChatMessage("[Server]", "Please type in the server's IP Address."));
+        
     }
     
-    /**
-     * 
-     * @param cm
-     */
-    public void displayChatMessage(ChatMessage cm) {
-        if(cm.getMessage().equals("")) {
-            return;
+    private class Chat {
+    	
+    	private ChatMessage[] chat;
+    	
+    	public void displayChatMessage(ChatMessage cm) {
+            if(cm.getMessage().equals("")) {
+                return;
+            }
+            ChatMessage[] temp = new ChatMessage[chat.length + 1];
+            for (int i = 0; i < chat.length; i++) {
+                temp[i] = chat[i];
+            }
+            temp[temp.length - 1] = cm;
+            chat = temp;
+            updateChatHistory();
         }
-        ChatMessage[] temp = new ChatMessage[chat.length + 1];
-        for (int i = 0; i < chat.length; i++) {
-            temp[i] = chat[i];
+        
+        public void addChatMessage(ChatMessage cm) {
+            displayChatMessage(cm);
+            sendChatMessage(cm);
         }
-        temp[temp.length - 1] = cm;
-        chat = temp;
-        updateChatText();
-    }
-    
-    public void addChatMessage(ChatMessage cm) {
-        displayChatMessage(cm);
-        sendChatMessage(cm);
-    }
-    
-    public void updateChatText() {
-        input.setText("");
-        history.setText("");
-        for (ChatMessage cm : chat) {
-            history.setText(history.getText() + cm.toString() + "\n");
+        
+        public void updateChatHistory() {
+            input.setText("");
+            history.setText("");
+            for (ChatMessage cm : chat) {
+                history.setText(history.getText() + cm.toString() + "\n");
+            }
         }
-    }
-    
-    public boolean sendChatMessage(ChatMessage cm) {
-        try {
-            ObjectOutputStream output;
-            output = new ObjectOutputStream(socket.getOutputStream());
-            output.writeObject(cm);
+        
+        public boolean sendChatMessage(ChatMessage cm) {
+            try {
+                ObjectOutputStream output;
+                output = new ObjectOutputStream(socket.getOutputStream());
+                output.writeObject(cm);
+            }
+            catch(Exception e) {
+                return false;
+            }
+            return true;
         }
-        catch(Exception e) {
-            return false;
+        
+        public int getChatLength() {
+            if (chat == null) {
+                return 0;
+            }
+            return chat.length;
         }
-        return true;
-    }
-    
-    public int getChatLength() {
-        if (chat == null) {
-            return 0;
-        }
-        return chat.length;
-    }
-    /*
-    public void displayChatMessage(ChatMessage cm) {
-        if(cm.getMessage().equals("")) {
-            return;
-        }
-        ChatMessage[] temp = new ChatMessage[chat.length + 1];
-        for (int i = 0; i < chat.length; i++) {
-            temp[i] = chat[i];
-        }
-        temp[temp.length - 1] = cm;
-        chat = temp;
-        updateChatText();
-    }
-    
-    public void addChatMessage(ChatMessage cm) {
-        displayChatMessage(cm);
-        sendChatMessage(cm);
-    }
-    
-    public void updateChatText() {
-        inputBox.setText("");
-        chatBox.setText("");
-        for (ChatMessage cm : chat) {
-            chatBox.setText(chatBox.getText() + cm.toString() + "\n");
+        
+        public ChatMessage[] getChat() {
+        	return chat;
         }
     }
     
-    public int getChatLength() {
-        if (chat == null) {
-            return 0;
-        }
-        return chat.length;
-    }
-    
-    public ChatMessage getChatMessage(int index) {
-        return chat[index];
-    }
-    */
     private class ChatReceiver extends Thread {
         
         public ChatReceiver() {
@@ -144,24 +120,11 @@ public class CommPanel extends JPanel {
             while(true) {
                 try {
                     input = new ObjectInputStream(socket.getInputStream());
-                    boolean messageReceived = false;
-                    
-                    System.out.println("Listening for message.");
                     ChatMessage inc = (ChatMessage) input.readObject();
-                    System.out.println("Received: " + inc.toString());
-                    if (! inc.getSender().equals("[Game]")) {
-                        displayChatMessage(inc);
-                        continue;
-                    }
+                    chat.displayChatMessage(inc);
                 }
-                catch(IOException e) {
-                    System.out.println("Error receiving message:" + e.getMessage());
-                }
-                catch(ClassNotFoundException e) {
-                    System.out.println("Wait what happened?");              
-                }
-                catch(NullPointerException e) {
-                    //This gets run a lot idk
+                catch(Exception e) {
+                	continue;
                 }
             }
             
@@ -169,11 +132,25 @@ public class CommPanel extends JPanel {
         
     }
     
-    public void setSocket(Socket s) {
-        socket = s;
+    private class CommInitializer extends Thread {
+    	
+    	public void run() {
+            try {
+                while(chat.getChatLength() == 1) {
+                    System.out.print("");
+                }
+                String ip = chat.getChat()[1].getMessage();
+                ip += ":58541";
+                socket = new Socket(ip.substring(0, ip.indexOf(":")), Integer.parseInt(ip.substring(ip.indexOf(":") + 1)));
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.exit(0);
+            }
+        }
     }
     
-    private void waitForComm() {
+    private void startCommReciever() {
         ChatReceiver cr = new ChatReceiver();
         cr.start();
     }

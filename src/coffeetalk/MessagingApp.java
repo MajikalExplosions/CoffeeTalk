@@ -7,7 +7,7 @@ package coffeetalk;
 
 /**
  *
- * @author joseph
+ * @author MajikalExplosions
  */
 public class MessagingApp {
     

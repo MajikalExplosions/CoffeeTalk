@@ -1,7 +1,7 @@
 package coffeetalk;
 /**
  * Wrapper class for chat messages
- * @author joseph
+ * @author MajikalExplosions
  */
 public class ChatMessage implements java.io.Serializable {
     
