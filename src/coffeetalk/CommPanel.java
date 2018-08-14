@@ -192,9 +192,10 @@ public class CommPanel {
 	                System.out.println("OOPS");
 	                
 	                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	                System.out.println(input.readLine());
+	                System.out.println("A" + input.readLine());
 	                int newPort = Integer.parseInt(input.readLine());
 	                System.out.println("OOPS2");
+	                socket.close();
 	                socket = new Socket(ip.substring(0, ip.indexOf(":")), newPort);
 	                System.out.println("OOPS3");
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Connected!"));
@@ -204,7 +205,7 @@ public class CommPanel {
 	            	chat.displayChatMessage(new ChatMessage("[Server]", "IP Invalid."));
 	            	i2 += 4;
 	            	//System.out.println();
-	            	e2.printStackTrace();
+	            	//e2.printStackTrace();
 	            }
 	            catch (Exception e) {
 	            	System.out.println(e.getClass().getName());

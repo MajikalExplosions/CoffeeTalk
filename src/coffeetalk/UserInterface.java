@@ -346,13 +346,25 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
         		header.setOpaque(true);
         		footer.setBackground(theme.getSecondary());
         		footer.setOpaque(true);
-        		messageInputLabel.setBackground(theme.getAccent());
+        		messageInputLabel.setForeground(theme.getAccent());
         		messageInputLabel.setOpaque(true);
-        		messageOutputLabel.setBackground(theme.getAccent());
+        		messageOutputLabel.setForeground(theme.getAccent());
         		messageOutputLabel.setOpaque(true);
     			outputField.setBackground(theme.getSecondary());
+    			outputField.setForeground(theme.getAccent());
     			outputField.setOpaque(true);
+    			keyForm.setBackground(theme.getSecondary());
+    			keyForm.setOpaque(true);
+    			submitEncryption.setBackground(theme.getSecondary());
+    			submitEncryption.setForeground(theme.getAccent());
+    			submitEncryption.setOpaque(true);
+    			dropdown.setForeground(theme.getAccent());
+    			dropdown.setBackground(theme.getSecondary());
+    			dropdown.setOpaque(true);
+    			
 	        	
+    			
+    			
 	        }
 			break;
 		case Messenger:
