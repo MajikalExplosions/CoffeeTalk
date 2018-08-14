@@ -75,10 +75,6 @@ public class UserInterface  {
             		window.add(header, BorderLayout.NORTH);
             		window.add(footer, BorderLayout.SOUTH);
             		
-            		
-            		
-            		
-            		
             		//Add header and footer
             		header.setLayout(new GridLayout(1, 2));
             		footer.setLayout(new BorderLayout());
@@ -208,8 +204,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 		case Encoder:
 			//Encoder Page
 			JTextArea outputField = new JTextArea();
-			//outputField.setBackground(theme.getSecondary());
-			//outputField.setOpaque(true);
+
 			
 			//Add basic outline thing
 			content.setLayout(new GridLayout(3, 1));//3 vertical boxes
@@ -346,11 +341,17 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        if (data.currentTheme != -1) {
 	        	//MARKER_1 OfflinePanel
 	        	
-	        	//Header&Footer Set Colour
+	        	//Set Colour
         		header.setBackground(theme.getSecondary());
+        		header.setOpaque(true);
         		footer.setBackground(theme.getSecondary());
+        		footer.setOpaque(true);
         		messageInputLabel.setBackground(theme.getAccent());
+        		messageInputLabel.setOpaque(true);
         		messageOutputLabel.setBackground(theme.getAccent());
+        		messageOutputLabel.setOpaque(true);
+    			outputField.setBackground(theme.getSecondary());
+    			outputField.setOpaque(true);
 	        	
 	        }
 			break;
