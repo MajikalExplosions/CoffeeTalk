@@ -189,7 +189,7 @@ public class CommPanel {
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Connected!"));
 	                break;
 	            }
-	            catch(NumberFormatException | NoRouteToHostException | UnknownHostException e2) {
+	            catch(NumberFormatException | NoRouteToHostException | StringIndexOutOfBoundsException | UnknownHostException e2) {
 	            	chat.displayChatMessage(new ChatMessage("[Server]", "IP Invalid."));
 	            	i2 += 4;
 	            	
