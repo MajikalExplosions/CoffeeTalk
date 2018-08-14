@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 
 import java.awt.Image;
@@ -18,10 +20,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -35,6 +35,7 @@ public class UserInterface  {
 	JPanel header;
 	JPanel footer;
 	Theme theme;
+	CommPanel comm;
 	
 	/**
 	 * No docs available. Even I don't know how it works anymore.
@@ -66,6 +67,7 @@ public class UserInterface  {
             public void actionPerformed(ActionEvent e) {
             	if (! name.getText().equals("")) {
             		data.username = name.getText();
+            		comm = new CommPanel(data.username);
             		
             		//Add window stuff
             		window.getContentPane().removeAll();
@@ -164,7 +166,40 @@ public class UserInterface  {
 	}
 	
 	public void startPage(Page p) {
-		content.removeAll();
+		
+		/*
+		 * ****************IMPORTANT*****************
+		 * 
+	      JJJJJJJJJJJ               AAA                       CCCCCCCCCCCCCKKKKKKKKK    KKKKKKK !!!  !!! 
+	      J:::::::::J              A:::A                   CCC::::::::::::CK:::::::K    K:::::K!!:!!!!:!!
+	      J:::::::::J             A:::::A                CC:::::::::::::::CK:::::::K    K:::::K!:::!!:::!
+	      JJ:::::::JJ            A:::::::A              C:::::CCCCCCCC::::CK:::::::K   K::::::K!:::!!:::!
+	        J:::::J             A:::::::::A            C:::::C       CCCCCCKK::::::K  K:::::KKK!:::!!:::!
+	        J:::::J            A:::::A:::::A          C:::::C                K:::::K K:::::K   !:::!!:::!
+	        J:::::J           A:::::A A:::::A         C:::::C                K::::::K:::::K    !:::!!:::!
+	        J:::::j          A:::::A   A:::::A        C:::::C                K:::::::::::K     !:::!!:::!
+	        J:::::J         A:::::A     A:::::A       C:::::C                K:::::::::::K     !:::!!:::!
+JJJJJJJ     J:::::J        A:::::AAAAAAAAA:::::A      C:::::C                K::::::K:::::K    !:::!!:::!
+J:::::J     J:::::J       A:::::::::::::::::::::A     C:::::C                K:::::K K:::::K   !!:!!!!:!!
+J::::::J   J::::::J      A:::::AAAAAAAAAAAAA:::::A     C:::::C       CCCCCCKK::::::K  K:::::KKK !!!  !!! 
+J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK:::::::K   K::::::K          
+ JJ:::::::::::::JJ     A:::::A               A:::::A     CC:::::::::::::::CK:::::::K    K:::::K !!!  !!! 
+   JJ:::::::::JJ      A:::::A                 A:::::A      CCC::::::::::::CK:::::::K    K:::::K!!:!!!!:!!
+     JJJJJJJJJ       AAAAAAA                   AAAAAAA        CCCCCCCCCCCCCKKKKKKKKK    KKKKKKK !!!  !!!
+		 * 
+		 * ******************************************
+		 * 
+		 * Okay so basically to set the color of the buttons, use the following:
+		 * <object>.setBackground(theme.getPrimary());
+		 * <object>.setBackground(theme.getSecondary());
+		 * <object>.setBackground(theme.getAccent());
+		 * 
+		 * And another note: If there is another component inside one(EX a JLabel in a JPanel)
+		 * and you set the outer one's background(In the example it's the JPanel), it WILL NOT show.
+		 * That is because the one on top(EX the JLabel) covers it up.
+		 */
+		
+		content.removeAll();//Removes everything in the center panel
 		
 		switch(p) {
 		case Encoder:
@@ -177,37 +212,7 @@ public class UserInterface  {
 			JPanel settings = new JPanel();//Middle panel with settings and things
 			JPanel output = new JPanel();//Bottom panel with output
 			
-			/*
-			 * ****************IMPORTANT*****************
-			 * 
-          JJJJJJJJJJJ               AAA                       CCCCCCCCCCCCCKKKKKKKKK    KKKKKKK !!!  !!! 
-          J:::::::::J              A:::A                   CCC::::::::::::CK:::::::K    K:::::K!!:!!!!:!!
-          J:::::::::J             A:::::A                CC:::::::::::::::CK:::::::K    K:::::K!:::!!:::!
-          JJ:::::::JJ            A:::::::A              C:::::CCCCCCCC::::CK:::::::K   K::::::K!:::!!:::!
-            J:::::J             A:::::::::A            C:::::C       CCCCCCKK::::::K  K:::::KKK!:::!!:::!
-            J:::::J            A:::::A:::::A          C:::::C                K:::::K K:::::K   !:::!!:::!
-            J:::::J           A:::::A A:::::A         C:::::C                K::::::K:::::K    !:::!!:::!
-            J:::::j          A:::::A   A:::::A        C:::::C                K:::::::::::K     !:::!!:::!
-            J:::::J         A:::::A     A:::::A       C:::::C                K:::::::::::K     !:::!!:::!
-JJJJJJJ     J:::::J        A:::::AAAAAAAAA:::::A      C:::::C                K::::::K:::::K    !:::!!:::!
-J:::::J     J:::::J       A:::::::::::::::::::::A     C:::::C                K:::::K K:::::K   !!:!!!!:!!
-J::::::J   J::::::J      A:::::AAAAAAAAAAAAA:::::A     C:::::C       CCCCCCKK::::::K  K:::::KKK !!!  !!! 
-J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK:::::::K   K::::::K          
- JJ:::::::::::::JJ     A:::::A               A:::::A     CC:::::::::::::::CK:::::::K    K:::::K !!!  !!! 
-   JJ:::::::::JJ      A:::::A                 A:::::A      CCC::::::::::::CK:::::::K    K:::::K!!:!!!!:!!
-     JJJJJJJJJ       AAAAAAA                   AAAAAAA        CCCCCCCCCCCCCKKKKKKKKK    KKKKKKK !!!  !!!
-			 * 
-			 * ******************************************
-			 * 
-			 * Okay so basically to set the color of the buttons, use the following:
-			 * <object>.setBackground(theme.getPrimary());
-			 * <object>.setBackground(theme.getSecondary());
-			 * <object>.setBackground(theme.getAccent());
-			 * 
-			 * And another note: If there is another component inside one(EX a JLabel in a JPanel)
-			 * and you set the outer one's background(In the example it's the JPanel), it WILL NOT show.
-			 * That is because the one on top(EX the JLabel) covers it up.
-			 */
+			
 			//Add input fields
 			input.setLayout(new BorderLayout());//We discussed this right
 			input.add(new JLabel("Message Input"), BorderLayout.SOUTH);//Label at the bottom that says that this is input
@@ -281,6 +286,56 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK::::
 			break;
 		case Messenger:
 			//Messenger Page
+			content.setLayout(new BorderLayout());
+			
+			//Define 3 sections
+			JPanel optionsBar = new JPanel();
+			JTextArea history = new JTextArea();
+			JPanel inputBar = new JPanel();
+			
+			JScrollPane historyContainer;//History needs to be scrollable
+			historyContainer = comm.setHistoryPanel(history);
+			
+			optionsBar.setLayout(new BorderLayout());
+			inputBar.setLayout(new BorderLayout());
+			
+			//Add message button and field
+			JTextField messageInput = new JTextField();
+			comm.setInputPanel(messageInput);
+			JButton textSubmit = new JButton("→");
+			inputBar.add(messageInput, BorderLayout.CENTER);
+			inputBar.add(textSubmit, BorderLayout.EAST);
+			
+			//These variables are used below but needs to be defined up here for access
+			JTextField m_keyInput = new JTextField();//Text field for custom keys
+			String[] m_options = {"Custom", "Preset A", "Preset B", "Preset C", "Preset D", "Preset E"};//I'll fix this later
+	        JComboBox m_dropdown = new JComboBox(m_options);
+			
+			//Add stuff that happens on submit
+			textSubmit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					comm.submitChatMessage(messageInput.getText());
+				}
+			});
+			
+	        m_dropdown.addActionListener(new ActionListener() {//Makes stuff happen when you change the option
+				public void actionPerformed(ActionEvent e) {
+			        if (((String) m_dropdown.getSelectedItem()).equals("Custom")) {
+			        	m_keyInput.setEnabled(true);
+			        }
+			        else {
+			        	m_keyInput.setEnabled(false);
+			        }
+				}
+    		});
+	        optionsBar.add(m_keyInput, BorderLayout.CENTER);
+	        optionsBar.add(m_dropdown, BorderLayout.WEST);
+	        
+	        content.add(optionsBar, BorderLayout.NORTH);
+	        content.add(historyContainer, BorderLayout.CENTER);
+	        content.add(inputBar, BorderLayout.SOUTH);
+	        
+	        comm.manualRefresh();
 			break;
 		case Settings:
 			//Settings Page
