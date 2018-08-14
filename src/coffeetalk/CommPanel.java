@@ -114,7 +114,12 @@ public class CommPanel {
         public boolean sendChatMessage(ChatMessage cm) {
             try {
                 ObjectOutputStream output;
-                cm.encrypt();
+                if (dropdown.getSelectedIndex() == 0) {//CUSTOM
+                	cm.encrypt((new DataStore()).presetKeys[dropdown.getSelectedIndex() - 1]);
+                }
+                else {
+                	cm.encrypt(Integer.parseInt(ki.getText()));
+                }
                 output = new ObjectOutputStream(socket.getOutputStream());
                 output.writeObject(cm);
             }
@@ -148,7 +153,12 @@ public class CommPanel {
                 try {
                     input = new ObjectInputStream(socket.getInputStream());
                     ChatMessage inc = (ChatMessage) input.readObject();
-                    inc.decrypt();
+                    if (dropdown.getSelectedIndex() == 0) {//CUSTOM
+                    	inc.decrypt((new DataStore()).presetKeys[dropdown.getSelectedIndex() - 1]);
+                    }
+                    else {
+                    	inc.decrypt(Integer.parseInt(ki.getText()));
+                    }
                     chat.displayChatMessage(inc);
                 }
                 catch(Exception e) {
