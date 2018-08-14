@@ -227,11 +227,12 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        message.setLineWrap(true);
 		    
 		    
-		    //JScrollPane messageInputScroll = new JScrollPane (message);
-		    //   messageInputScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		    //   messageInputScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		    //   messageInputScroll.setAutoscrolls(true);
-		    
+	        /**
+		       JScrollPane messageInputScroll = new JScrollPane (message);
+		          messageInputScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		          messageInputScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		          messageInputScroll.setAutoscrolls(true);
+		    */
 		  
 		       
 	        input.add(message, BorderLayout.CENTER);
@@ -303,11 +304,14 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        //Add output scrolling
 	        outputField.setLineWrap(true);
     
-		    //JScrollPane messageOutputScroll = new JScrollPane (outputField);
-		    //   messageOutputScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		    //   messageOutputScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		    //   messageOutputScroll.setAutoscrolls(true);
 	        
+	        /**
+		    	JScrollPane messageOutputScroll = new JScrollPane (outputField);
+		       		messageOutputScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		       		messageOutputScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		       		messageOutputScroll.setAutoscrolls(true);
+	        
+	        */
 	        
 	        
 	        
