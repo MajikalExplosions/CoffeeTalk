@@ -191,7 +191,9 @@ public class CommPanel {
 	                
 	                ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 	                System.out.println("OOPS3");
-	                int newPort = Integer.parseInt(((ChatMessage) input.readObject()).getMessage());
+	                ChatMessage cm = (ChatMessage) input.readObject();
+	                System.out.println("OOPS1");
+	                int newPort = Integer.parseInt(cm.getMessage());
 	                System.out.println("OOPS2");
 	                socket = new Socket(ip.substring(0, ip.indexOf(":")), newPort);
 	                System.out.println("OOPS4");
