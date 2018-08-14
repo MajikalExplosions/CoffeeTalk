@@ -425,6 +425,35 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        }
 			break;
 		case Settings:
+
+			content.setLayout(new BorderLayout());
+			JPanel themeSettingBar = new JPanel();
+			themeSettingBar.setLayout(new BorderLayout());
+			content.add(themeSettingBar, BorderLayout.NORTH);
+			
+			JComboBox s_dropdown = new JComboBox();
+			
+			for (Theme t : data.themes) {
+				s_dropdown.addItem(t.getName());
+			}
+			
+			if (data.currentTheme != -1) {
+				s_dropdown.setSelectedIndex(data.currentTheme);
+			}
+			
+			s_dropdown.addActionListener(new ActionListener() {//Makes stuff happen when you change the option
+				public void actionPerformed(ActionEvent e) {
+			        theme = data.themes[s_dropdown.getSelectedIndex()];
+			        data.currentTheme = s_dropdown.getSelectedIndex();
+			        startPage(Page.Settings);
+				}
+    		});
+			
+			JLabel s_themeLabel = new JLabel("Theme");
+			themeSettingBar.add(s_themeLabel, BorderLayout.WEST);
+			themeSettingBar.add(s_dropdown, BorderLayout.CENTER);
+			content.add(themeSettingBar, BorderLayout.NORTH);
+			
 			//Settings Page
 			break;
 		default:
