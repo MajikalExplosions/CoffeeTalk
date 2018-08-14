@@ -191,17 +191,18 @@ public class CommPanel {
 	                
 	                ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 	                System.out.println("OOPS1");
-	                int newPort = Integer.parseInt(input.readUTF());
+	                int newPort = Integer.parseInt(input.readLine());
 	                System.out.println("OOPS2");
 	                socket = new Socket(ip.substring(0, ip.indexOf(":")), newPort);
 	                System.out.println("OOPS3");
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Connected!"));
 	                break;
 	            }
-	            catch(NumberFormatException | NoRouteToHostException | StringIndexOutOfBoundsException | ClassNotFoundException | UnknownHostException e2) {
+	            catch(NumberFormatException | NoRouteToHostException | StringIndexOutOfBoundsException | UnknownHostException e2) {
 	            	chat.displayChatMessage(new ChatMessage("[Server]", "IP Invalid."));
 	            	i2 += 4;
-	            	
+	            	//System.out.println();
+	            	e2.printStackTrace();
 	            }
 	            catch (Exception e) {
 	            	System.out.println(e.getClass().getName());
