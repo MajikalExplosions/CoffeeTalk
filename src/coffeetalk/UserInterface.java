@@ -307,9 +307,17 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        
 	        //Add output
 	        output.setLayout(new BorderLayout());//This is basically a repeat of the top section
-			output.add(new JLabel("Message Output"), BorderLayout.SOUTH);
+			//output.add(new JLabel("Message Output"), BorderLayout.SOUTH);
 	        output.add(outputField, BorderLayout.CENTER);
 	        outputField.setEditable(false);//No editing output field
+	        
+	        
+	        
+	        //Add output label
+	        JLabel messageOutputLabel = new JLabel("Message Output"); 
+	        messageOutputLabel.setBackground(theme.getAccent());
+	        output.add(messageOutputLabel, BorderLayout.SOUTH);
+	        
 	        
 	        
 	        //Add output scrolling
