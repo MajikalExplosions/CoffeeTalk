@@ -35,6 +35,9 @@ public class UserInterface  {
 	JPanel footer;
 	Theme theme;
 	
+	/**
+	 * No docs available. Even I don't know how it works anymore.
+	 */
 	public void InitialiseWindow() {
 		
 		data = new DataStore();
@@ -168,29 +171,28 @@ public class UserInterface  {
 			JTextField outputField = new JTextField();
 			
 			//Add basic outline thing
-			content.setLayout(new GridLayout(3, 1));
-			JPanel input = new JPanel();
-			JPanel settings = new JPanel();
-			JPanel output = new JPanel();
+			content.setLayout(new GridLayout(3, 1));//3 vertical boxes
+			JPanel input = new JPanel();//Top panel with input
+			JPanel settings = new JPanel();//Middle panel with settings and things
+			JPanel output = new JPanel();//Bottom panel with output
 			
 			//Add input fields
-			input.setLayout(new BorderLayout());
-			input.add(new JLabel("Message Input"), BorderLayout.SOUTH);
-	        JTextField message = new JTextField();
+			input.setLayout(new BorderLayout());//We discussed this right
+			input.add(new JLabel("Message Input"), BorderLayout.SOUTH);//Label at the bottom that says that this is input
+	        JTextField message = new JTextField();//Place to type message **IMPORTANT**
 	        input.add(message, BorderLayout.CENTER);
 	        
 	        //Add settings
-	        settings.setLayout(new GridLayout(1, 2));
-	        JPanel keyInput = new JPanel();
-	        JPanel optionsMenu = new JPanel();
+	        settings.setLayout(new GridLayout(1, 2));//Two horizontal boxes
+	        JPanel keyInput = new JPanel();//This is for the dropdown and text input for the key
+	        JPanel optionsMenu = new JPanel();//This is like the "Go" and "Encrypt/Decrypt" buttons
 	        settings.add(keyInput);
 	        keyInput.setLayout(new GridLayout(2, 1));
-	        JTextField keyForm = new JTextField();
-	        String[] options = {"Custom", "Preset A", "Preset B", "Preset C", "Preset D", "Preset E"};
+	        JTextField keyForm = new JTextField();//Text field for custom keys
+	        String[] options = {"Custom", "Preset A", "Preset B", "Preset C", "Preset D", "Preset E"};//I'll fix this later
 	        JComboBox dropdown = new JComboBox(options);
-	        dropdown.addActionListener(new ActionListener() {
+	        dropdown.addActionListener(new ActionListener() {//Makes stuff happen when you change the option
 				public void actionPerformed(ActionEvent e) {
-					@SuppressWarnings("rawtypes")
 					JComboBox cb = (JComboBox) e.getSource();
 			        if (((String) cb.getSelectedItem()).equals("Custom")) {
 			        	keyForm.setEnabled(true);
@@ -203,19 +205,27 @@ public class UserInterface  {
 	        keyInput.add(dropdown);
 	        keyInput.add(keyForm);
 	        optionsMenu.setLayout(new BorderLayout());
-	        ButtonGroup bg = new ButtonGroup();
+	        ButtonGroup bg = new ButtonGroup();//Otherwise the two radio buttons won't toggle each other on/off
 	        JRadioButton encrypt = new JRadioButton("Encrypt");
 	        JRadioButton decrypt = new JRadioButton("Decrypt");
 	        optionsMenu.add(encrypt, BorderLayout.WEST);
 	        optionsMenu.add(decrypt, BorderLayout.EAST);
+	        encrypt.setSelected(true);
 	        bg.add(encrypt);
 	        bg.add(decrypt);
-	        JButton submitEncryption = new JButton("Submit");	        
+	        JButton submitEncryption = new JButton("Submit");
 	        submitEncryption.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-						if (! (message.getText().equals("") || keyForm.getText().equals(""))) {
-							outputField.setText(MathUtilities.cipher(message.getText(), Integer.parseInt(keyForm.getText().toString()), encrypt.isSelected()));
+						if (! (message.getText().equals(""))) {//If message isn't blank
+							if (dropdown.getSelectedIndex() == 0) {//If custom is selected
+								if (! keyForm.getText().equals("")) {//If key isn't blank then encrypt
+									outputField.setText(MathUtilities.cipher(message.getText(), Integer.parseInt(keyForm.getText().toString()), encrypt.isSelected()));
+								}
+							}
+							else {//If preset is selected use preset
+								outputField.setText(MathUtilities.cipher(message.getText(), data.presetKeys[dropdown.getSelectedIndex() - 1], encrypt.isSelected()));
+							}
 						}
 					}
 					catch(NumberFormatException e2) {
@@ -224,16 +234,16 @@ public class UserInterface  {
 					}
 				}
     		});
-	        optionsMenu.add(submitEncryption, BorderLayout.SOUTH);
+	        optionsMenu.add(submitEncryption, BorderLayout.SOUTH);//Add everything
 	        settings.add(optionsMenu);
 	        
 	        //Add output
-	        output.setLayout(new BorderLayout());
+	        output.setLayout(new BorderLayout());//This is basically a repeat of the top section
 			output.add(new JLabel("Message Output"), BorderLayout.SOUTH);
 	        output.add(outputField, BorderLayout.CENTER);
-	        outputField.setEditable(false);
+	        outputField.setEditable(false);//No editing output field
 	        
-	        content.add(input);
+	        content.add(input);//Add fields to content
 	        content.add(settings);
 	        content.add(output);
 			break;
