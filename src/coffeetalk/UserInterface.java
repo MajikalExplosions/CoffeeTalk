@@ -36,7 +36,6 @@ public class UserInterface  {
 	JPanel footer;
 	Theme theme;
 	CommPanel comm;
-	
 	/**
 	 * No docs available. Even I don't know how it works anymore.
 	 */
@@ -227,7 +226,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        message.setLineWrap(true);
 		    
 		    
-	        /**
+	        /*
 		       JScrollPane messageInputScroll = new JScrollPane (message);
 		          messageInputScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		          messageInputScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -305,7 +304,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        outputField.setLineWrap(true);
     
 	        
-	        /**
+	        /*
 		    	JScrollPane messageOutputScroll = new JScrollPane (outputField);
 		       		messageOutputScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		       		messageOutputScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -319,6 +318,10 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        content.add(input);//Add fields to content
 	        content.add(settings);
 	        content.add(output);
+	        
+	        if (data.currentTheme != -1) {
+	        	//MARKER_1
+	        }
 			break;
 		case Messenger:
 			//Messenger Page
@@ -373,6 +376,9 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        content.add(inputBar, BorderLayout.SOUTH);
 	        
 	        comm.manualRefresh();
+	        if (data.currentTheme != -1) {
+	        	//MARKER_2
+	        }
 			break;
 		case Settings:
 			//Settings Page
