@@ -187,10 +187,14 @@ public class CommPanel {
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Attempting to connect to the server..."));
 	                socket = new Socket(ip.substring(0, ip.indexOf(":")), Integer.parseInt(ip.substring(ip.indexOf(":") + 1)));
 	                
-	                ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
-	                int newPort = Integer.parseInt(((ChatMessage) input.readObject()).getMessage());
-	                socket = new Socket(ip.substring(0, ip.indexOf(":")), newPort);
+	                System.out.println("OOPS");
 	                
+	                ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
+	                System.out.println("OOPS3");
+	                int newPort = Integer.parseInt(((ChatMessage) input.readObject()).getMessage());
+	                System.out.println("OOPS2");
+	                socket = new Socket(ip.substring(0, ip.indexOf(":")), newPort);
+	                System.out.println("OOPS4");
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Connected!"));
 	                break;
 	            }
