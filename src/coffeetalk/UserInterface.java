@@ -204,7 +204,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK::::
 		switch(p) {
 		case Encoder:
 			//Encoder Page
-			JTextField outputField = new JTextField();
+			JTextArea outputField = new JTextArea();
 			
 			//Add basic outline thing
 			content.setLayout(new GridLayout(3, 1));//3 vertical boxes
@@ -216,8 +216,9 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK::::
 			//Add input fields
 			input.setLayout(new BorderLayout());//We discussed this right
 			input.add(new JLabel("Message Input"), BorderLayout.SOUTH);//Label at the bottom that says that this is input
-	        JTextField message = new JTextField();//Place to type message **IMPORTANT**
+	        JTextArea message = new JTextArea();//Place to type message **IMPORTANT**
 	        input.add(message, BorderLayout.CENTER);
+	        
 	        
 	        //Add settings
 	        settings.setLayout(new GridLayout(1, 2));//Two horizontal boxes
