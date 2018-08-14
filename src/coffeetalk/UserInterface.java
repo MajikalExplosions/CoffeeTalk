@@ -338,6 +338,9 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        content.add(settings);
 	        content.add(output);
 	        
+	       
+	        
+	        
 	        if (data.currentTheme != -1) {
 	        	//MARKER_1 OfflinePanel
 	        	
@@ -361,11 +364,11 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
     			dropdown.setForeground(theme.getAccent());
     			dropdown.setBackground(theme.getSecondary());
     			dropdown.setOpaque(true);
-    			
-	        	
-    			
-    			
+ 
 	        }
+	        
+	        
+	        
 			break;
 		case Messenger:
 			//Messenger Page
