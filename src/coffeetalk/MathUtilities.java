@@ -22,13 +22,13 @@ public class MathUtilities {
 				String name = line.substring(0, line.indexOf("|"));
 				line = line.substring(line.indexOf("|") + 1);
 				
-				Color p = new Color(getRGB(line.substring(0, 2)), getRGB(line.substring(2, 4)), getRGB(line.substring(4, 6)), 255);
+				Color p = new Color(getRGB(line.substring(0, 2)), getRGB(line.substring(2, 4)), getRGB(line.substring(4, 6)), 0);
 				line = line.substring(7);
 				
-				Color s2 = new Color(getRGB(line.substring(0, 2)), getRGB(line.substring(2, 4)), getRGB(line.substring(4, 6)), 255);
+				Color s2 = new Color(getRGB(line.substring(0, 2)), getRGB(line.substring(2, 4)), getRGB(line.substring(4, 6)), 0);
 				line = line.substring(7);
 				
-				Color a = new Color(getRGB(line.substring(0, 2)), getRGB(line.substring(2, 4)), getRGB(line.substring(4, 6)), 255);
+				Color a = new Color(getRGB(line.substring(0, 2)), getRGB(line.substring(2, 4)), getRGB(line.substring(4, 6)), 0);
 				
 				
 				themes = extendThemes(themes);
