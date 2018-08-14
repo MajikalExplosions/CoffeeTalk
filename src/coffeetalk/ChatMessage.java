@@ -17,12 +17,12 @@ public class ChatMessage implements java.io.Serializable {
         return sender + message;
     }
     
-	public void encrypt() {
-    	
+	public void encrypt(int key) {
+		MathUtilities.cipher(message, key, true);
     }
 	
-	public void decrypt() {
-		
+	public void decrypt(int key) {
+		MathUtilities.cipher(message, key, false);
 	}
     
     public String getMessage() {
