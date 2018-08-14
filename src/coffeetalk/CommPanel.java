@@ -2,7 +2,9 @@ package coffeetalk;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.net.NoRouteToHostException;
@@ -189,8 +191,7 @@ public class CommPanel {
 	                
 	                System.out.println("OOPS");
 	                
-	                ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
-	                System.out.println(input.readLine());
+	                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	                int newPort = Integer.parseInt(input.readLine());
 	                System.out.println("OOPS2");
 	                socket = new Socket(ip.substring(0, ip.indexOf(":")), newPort);
