@@ -18,6 +18,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -176,6 +177,37 @@ public class UserInterface  {
 			JPanel settings = new JPanel();//Middle panel with settings and things
 			JPanel output = new JPanel();//Bottom panel with output
 			
+			/*
+			 * ****************IMPORTANT*****************
+			 * 
+          JJJJJJJJJJJ               AAA                       CCCCCCCCCCCCCKKKKKKKKK    KKKKKKK !!!  !!! 
+          J:::::::::J              A:::A                   CCC::::::::::::CK:::::::K    K:::::K!!:!!!!:!!
+          J:::::::::J             A:::::A                CC:::::::::::::::CK:::::::K    K:::::K!:::!!:::!
+          JJ:::::::JJ            A:::::::A              C:::::CCCCCCCC::::CK:::::::K   K::::::K!:::!!:::!
+            J:::::J             A:::::::::A            C:::::C       CCCCCCKK::::::K  K:::::KKK!:::!!:::!
+            J:::::J            A:::::A:::::A          C:::::C                K:::::K K:::::K   !:::!!:::!
+            J:::::J           A:::::A A:::::A         C:::::C                K::::::K:::::K    !:::!!:::!
+            J:::::j          A:::::A   A:::::A        C:::::C                K:::::::::::K     !:::!!:::!
+            J:::::J         A:::::A     A:::::A       C:::::C                K:::::::::::K     !:::!!:::!
+JJJJJJJ     J:::::J        A:::::AAAAAAAAA:::::A      C:::::C                K::::::K:::::K    !:::!!:::!
+J:::::J     J:::::J       A:::::::::::::::::::::A     C:::::C                K:::::K K:::::K   !!:!!!!:!!
+J::::::J   J::::::J      A:::::AAAAAAAAAAAAA:::::A     C:::::C       CCCCCCKK::::::K  K:::::KKK !!!  !!! 
+J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK:::::::K   K::::::K          
+ JJ:::::::::::::JJ     A:::::A               A:::::A     CC:::::::::::::::CK:::::::K    K:::::K !!!  !!! 
+   JJ:::::::::JJ      A:::::A                 A:::::A      CCC::::::::::::CK:::::::K    K:::::K!!:!!!!:!!
+     JJJJJJJJJ       AAAAAAA                   AAAAAAA        CCCCCCCCCCCCCKKKKKKKKK    KKKKKKK !!!  !!!
+			 * 
+			 * ******************************************
+			 * 
+			 * Okay so basically to set the color of the buttons, use the following:
+			 * <object>.setBackground(theme.getPrimary());
+			 * <object>.setBackground(theme.getSecondary());
+			 * <object>.setBackground(theme.getAccent());
+			 * 
+			 * And another note: If there is another component inside one(EX a JLabel in a JPanel)
+			 * and you set the outer one's background(In the example it's the JPanel), it WILL NOT show.
+			 * That is because the one on top(EX the JLabel) covers it up.
+			 */
 			//Add input fields
 			input.setLayout(new BorderLayout());//We discussed this right
 			input.add(new JLabel("Message Input"), BorderLayout.SOUTH);//Label at the bottom that says that this is input
