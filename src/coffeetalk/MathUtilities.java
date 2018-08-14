@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class MathUtilities {
 	
+	private static final String LETTERS = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=!@#$%^&*()_+[]\\{}|;':\",./<>?`~\n";//Symbols that the cipher supports
+	
 	/**
 	 * Reads themes.txt and returns an array of themes
 	 * @return An array of theme objects
@@ -69,4 +71,29 @@ public class MathUtilities {
 		}
 		return t;
 	}
+	
+	public static String cipher(String input, int key, boolean mode) {
+        String output = "";//Create output
+        
+        //Makes key in range (0, LETTERS.length())
+        while (key < 0) key += LETTERS.length();
+        key %= LETTERS.length();
+        
+        //Flip if decoding
+        if (!mode) key = LETTERS.length() - key;
+        
+        //For ever letter find the index, modify it, and then add the result to the output.
+        for (int i = 0; i < input.length(); i++) {
+            output += LETTERS.charAt((findPos(input.charAt(i)) + key) % LETTERS.length());
+        }
+        return output;
+    }
+    
+    private static int findPos(char s) {
+        
+        for (int i = 0; i < LETTERS.length(); i++) {
+            if (LETTERS.charAt(i) == s) return i;
+        }
+        return -1;
+    }
 }

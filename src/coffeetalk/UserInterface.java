@@ -3,10 +3,13 @@ package coffeetalk;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.imageio.ImageIO;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JComboBox;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -162,6 +165,7 @@ public class UserInterface  {
 		switch(p) {
 		case Encoder:
 			//Encoder Page
+			JTextField outputField = new JTextField();
 			
 			//Add basic outline thing
 			content.setLayout(new GridLayout(3, 1));
@@ -176,9 +180,59 @@ public class UserInterface  {
 	        input.add(message, BorderLayout.CENTER);
 	        
 	        //Add settings
+	        settings.setLayout(new GridLayout(1, 2));
+	        JPanel keyInput = new JPanel();
+	        JPanel optionsMenu = new JPanel();
+	        settings.add(keyInput);
+	        keyInput.setLayout(new GridLayout(2, 1));
+	        JTextField keyForm = new JTextField();
+	        String[] options = {"Custom", "Preset A", "Preset B", "Preset C", "Preset D", "Preset E"};
+	        JComboBox dropdown = new JComboBox(options);
+	        dropdown.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					@SuppressWarnings("rawtypes")
+					JComboBox cb = (JComboBox) e.getSource();
+			        if (((String) cb.getSelectedItem()).equals("Custom")) {
+			        	keyForm.setEnabled(true);
+			        }
+			        else {
+			        	keyForm.setEnabled(false);
+			        }
+				}
+    		});
+	        keyInput.add(dropdown);
+	        keyInput.add(keyForm);
+	        optionsMenu.setLayout(new BorderLayout());
+	        ButtonGroup bg = new ButtonGroup();
+	        JRadioButton encrypt = new JRadioButton("Encrypt");
+	        JRadioButton decrypt = new JRadioButton("Decrypt");
+	        optionsMenu.add(encrypt, BorderLayout.WEST);
+	        optionsMenu.add(decrypt, BorderLayout.EAST);
+	        bg.add(encrypt);
+	        bg.add(decrypt);
+	        JButton submitEncryption = new JButton("Submit");	        
+	        submitEncryption.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						if (! (message.getText().equals("") || keyForm.getText().equals(""))) {
+							outputField.setText(MathUtilities.cipher(message.getText(), Integer.parseInt(keyForm.getText().toString()), encrypt.isSelected()));
+						}
+					}
+					catch(NumberFormatException e2) {
+						System.out.println(e2.getMessage());
+						//Do nothing
+					}
+				}
+    		});
+	        optionsMenu.add(submitEncryption, BorderLayout.SOUTH);
+	        settings.add(optionsMenu);
 	        
 	        //Add output
-			
+	        output.setLayout(new BorderLayout());
+			output.add(new JLabel("Message Output"), BorderLayout.SOUTH);
+	        output.add(outputField, BorderLayout.CENTER);
+	        outputField.setEditable(false);
+	        
 	        content.add(input);
 	        content.add(settings);
 	        content.add(output);
