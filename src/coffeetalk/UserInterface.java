@@ -220,7 +220,17 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 			
 			//Add input fields
 			input.setLayout(new BorderLayout());//We discussed this right
-			input.add(new JLabel("Message Input"), BorderLayout.SOUTH);//Label at the bottom that says that this is input
+			
+			
+			
+			JLabel messageInput = new JLabel("Message Input");
+			input.add(messageInput, BorderLayout.SOUTH);
+			
+			
+			
+			
+			
+			//input.add(new JLabel("Message Input"), BorderLayout.SOUTH);//Label at the bottom that says that this is input
 	        JTextArea message = new JTextArea();//Place to type message **IMPORTANT**
 	        
 	        message.setLineWrap(true);

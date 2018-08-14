@@ -200,6 +200,7 @@ public class CommPanel {
 	            	
 	            }
 	            catch (Exception e) {
+	            	System.out.println(e.getClass().getName());
 	            }
     		}
         }
