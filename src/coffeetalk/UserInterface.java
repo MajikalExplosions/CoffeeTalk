@@ -75,6 +75,10 @@ public class UserInterface  {
             		window.add(header, BorderLayout.NORTH);
             		window.add(footer, BorderLayout.SOUTH);
             		
+            		
+            		
+            		
+            		
             		//Add header and footer
             		header.setLayout(new GridLayout(1, 2));
             		footer.setLayout(new BorderLayout());
@@ -225,7 +229,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 			//Message Input Label
 			JLabel messageInputLabel = new JLabel("Message Input");
 			input.add(messageInputLabel, BorderLayout.SOUTH);
-			messageInputLabel.setBackground(theme.getAccent());
+			
 			
 			
 			
@@ -315,7 +319,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        
 	        //Add output label
 	        JLabel messageOutputLabel = new JLabel("Message Output"); 
-	        messageOutputLabel.setBackground(theme.getAccent());
+	     
 	        output.add(messageOutputLabel, BorderLayout.SOUTH);
 	        
 	        
@@ -341,10 +345,12 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        
 	        if (data.currentTheme != -1) {
 	        	//MARKER_1 OfflinePanel
-	        	//<object>.setBackground(theme.getPrimary());
-	   		    //message.setBackground(theme.getSecondary());
-	   		    //message.setOpaque(true);
-	   		    //<object>.setBackground(theme.getAccent());
+	        	
+	        	//Header&Footer Set Colour
+        		header.setBackground(theme.getSecondary());
+        		footer.setBackground(theme.getSecondary());
+        		messageInputLabel.setBackground(theme.getAccent());
+        		messageOutputLabel.setBackground(theme.getAccent());
 	        	
 	        }
 			break;
