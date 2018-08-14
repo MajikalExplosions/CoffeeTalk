@@ -391,7 +391,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        	decrypt.setForeground(theme.getAccent());
 	        	decrypt.setOpaque(true);
 	        	
-	        	submitEncryption.setBackground(theme.getSecondary());
+	        	submitEncryption.setBackground(theme.getPrimary());
 	        	submitEncryption.setForeground(theme.getAccent());
 	        	submitEncryption.setBorderPainted(false);
 	        	submitEncryption.setOpaque(true);
@@ -469,6 +469,18 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        comm.manualRefresh();
 	        if (data.currentTheme != -1) {
 	        	//MARKER_2 Messenger Panel
+	        	
+	        	content.setBackground(theme.getPrimary());
+	        	content.setForeground(theme.getAccent());
+	        	content.setOpaque(true);
+	        	
+	        	header.setBackground(theme.getSecondary());
+	        	header.setForeground(theme.getAccent());
+	        	header.setOpaque(true);
+	        	
+	        	footer.setBackground(theme.getSecondary());
+	        	footer.setForeground(theme.getAccent());
+	        	footer.setOpaque(true);
 	        }
 			break;
 		case Settings:
@@ -502,6 +514,34 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 			content.add(themeSettingBar, BorderLayout.NORTH);
 			
 			//Settings Page
+			
+			if (data.currentTheme != -1) {
+	        	//MARKER_3 Settings Panel
+				
+				themeSettingBar.setBackground(theme.getPrimary());
+				themeSettingBar.setForeground(theme.getAccent());
+				themeSettingBar.setOpaque(true);
+				
+				s_dropdown.setBackground(theme.getPrimary());
+				s_dropdown.setForeground(theme.getAccent());
+				s_dropdown.setOpaque(true);
+				
+				s_themeLabel.setBackground(theme.getPrimary());
+				s_themeLabel.setForeground(theme.getAccent());
+				s_themeLabel.setOpaque(true);
+				
+				content.setBackground(theme.getPrimary());
+	        	content.setForeground(theme.getAccent());
+	        	content.setOpaque(true);
+				
+				header.setBackground(theme.getSecondary());
+	        	header.setForeground(theme.getAccent());
+	        	header.setOpaque(true);
+	        	
+	        	footer.setBackground(theme.getSecondary());
+	        	footer.setForeground(theme.getAccent());
+	        	footer.setOpaque(true);
+	        }
 			break;
 		default:
 			//the heck why's it here
