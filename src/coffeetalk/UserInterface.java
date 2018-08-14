@@ -222,10 +222,9 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 			input.setLayout(new BorderLayout());//We discussed this right
 			
 			
-			
+			//Message Input Label
 			JLabel messageInputLabel = new JLabel("Message Input");
 			input.add(messageInputLabel, BorderLayout.SOUTH);
-			
 			messageInputLabel.setBackground(theme.getAccent());
 			
 			
