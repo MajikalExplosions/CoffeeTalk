@@ -177,9 +177,11 @@ public class CommPanel {
     		while (true) {
 	            try {	            	
 	            	while(chat == null) {
+	            		continue;
 	                }
 	            	chat.displayChatMessage(new ChatMessage("[Server]", "Please type in the server's IP Address."));
 	            	while(chat.getChatLength() <= i2) {
+	            		this.sleep(1);
 	                }
 	                String ip = chat.getChat()[i2].getMessage();
 	                ip += ":58541";
