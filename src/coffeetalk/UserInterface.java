@@ -341,34 +341,78 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	       
 	        
 	        
-	        if (data.currentTheme != -1) {
+        	if (data.currentTheme != -1) {
 	        	//MARKER_1 OfflinePanel
+	        	content.setBackground(theme.getPrimary());
+	        	content.setForeground(theme.getAccent());
+	        	content.setOpaque(true);
 	        	
-	        	//Set Colour
-        		header.setBackground(theme.getSecondary());
-        		header.setOpaque(true);
-        		footer.setBackground(theme.getSecondary());
-        		footer.setOpaque(true);
-        		messageInputLabel.setForeground(theme.getAccent());
-        		messageInputLabel.setOpaque(true);
-        		messageOutputLabel.setForeground(theme.getAccent());
-        		messageOutputLabel.setOpaque(true);
-    			outputField.setBackground(theme.getSecondary());
-    			outputField.setForeground(theme.getAccent());
-    			outputField.setOpaque(true);
-    			keyForm.setBackground(theme.getSecondary());
-    			keyForm.setOpaque(true);
-    			submitEncryption.setBackground(theme.getSecondary());
-    			submitEncryption.setForeground(theme.getAccent());
-    			submitEncryption.setOpaque(true);
-    			dropdown.setForeground(theme.getAccent());
-    			dropdown.setBackground(theme.getSecondary());
-    			dropdown.setOpaque(true);
- 
+	        	input.setBackground(theme.getPrimary());
+	        	input.setForeground(theme.getAccent());
+	        	input.setOpaque(true);
+	        	
+	        	settings.setBackground(theme.getPrimary());
+	        	settings.setForeground(theme.getAccent());
+	        	settings.setOpaque(true);
+	        	
+	        	output.setBackground(theme.getPrimary());
+	        	output.setForeground(theme.getAccent());
+	        	output.setOpaque(true);
+	        	
+	        	messageInputLabel.setBackground(theme.getSecondary());
+	        	messageInputLabel.setForeground(theme.getAccent());
+	        	messageInputLabel.setOpaque(true);
+	        	
+	        	message.setBackground(theme.getPrimary());
+	        	message.setForeground(theme.getAccent());
+	        	message.setOpaque(true);
+	        	
+	        	keyInput.setBackground(theme.getSecondary());
+	        	keyInput.setForeground(theme.getAccent());
+	        	keyInput.setOpaque(true);
+	        	
+	        	optionsMenu.setBackground(theme.getSecondary());
+	        	optionsMenu.setForeground(theme.getAccent());
+	        	optionsMenu.setOpaque(true);
+	        	
+	        	keyForm.setBackground(theme.getPrimary());
+	        	keyForm.setForeground(theme.getAccent());
+	        	keyForm.setOpaque(true);
+	        	
+	        	dropdown.setBackground(theme.getSecondary());
+	        	dropdown.setForeground(theme.getAccent());
+	        	dropdown.setOpaque(true);
+	        	
+	        	encrypt.setBackground(theme.getSecondary());
+	        	encrypt.setForeground(theme.getAccent());
+	        	encrypt.setOpaque(true);
+	        	
+	        	decrypt.setBackground(theme.getSecondary());
+	        	decrypt.setForeground(theme.getAccent());
+	        	decrypt.setOpaque(true);
+	        	
+	        	submitEncryption.setBackground(theme.getSecondary());
+	        	submitEncryption.setForeground(theme.getAccent());
+	        	submitEncryption.setBorderPainted(false);
+	        	submitEncryption.setOpaque(true);
+	        	
+	        	messageOutputLabel.setBackground(theme.getSecondary());
+	        	messageOutputLabel.setForeground(theme.getAccent());
+	        	messageOutputLabel.setOpaque(true);	        	
+	        	
+	        	outputField.setBackground(theme.getPrimary());
+	        	outputField.setForeground(theme.getAccent());
+	        	outputField.setOpaque(true);
+	        	
+	        	
+	        	header.setBackground(theme.getSecondary());
+	        	header.setForeground(theme.getAccent());
+	        	header.setOpaque(true);
+	        	
+	        	footer.setBackground(theme.getSecondary());
+	        	footer.setForeground(theme.getAccent());
+	        	footer.setOpaque(true);
 	        }
-	        
-	        
-	        
 			break;
 		case Messenger:
 			//Messenger Page
