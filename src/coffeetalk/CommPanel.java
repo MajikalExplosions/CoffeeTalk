@@ -192,6 +192,7 @@ public class CommPanel {
 	                System.out.println("OOPS");
 	                
 	                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+	                System.out.println(input.readLine());
 	                int newPort = Integer.parseInt(input.readLine());
 	                System.out.println("OOPS2");
 	                socket = new Socket(ip.substring(0, ip.indexOf(":")), newPort);
