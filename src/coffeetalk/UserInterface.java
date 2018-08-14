@@ -320,7 +320,12 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        content.add(output);
 	        
 	        if (data.currentTheme != -1) {
-	        	//MARKER_1
+	        	//MARKER_1 OfflinePanel
+	        	//<object>.setBackground(theme.getPrimary());
+	   		    //message.setBackground(theme.getSecondary());
+	   		    //message.setOpaque(true);
+	   		    //<object>.setBackground(theme.getAccent());
+	        	
 	        }
 			break;
 		case Messenger:
@@ -377,7 +382,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        
 	        comm.manualRefresh();
 	        if (data.currentTheme != -1) {
-	        	//MARKER_2
+	        	//MARKER_2 Messenger Panel
 	        }
 			break;
 		case Settings:

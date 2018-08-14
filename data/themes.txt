@@ -4,3 +4,5 @@ Ocean Blue|304d6d|82a0bc|c5d5ea
 Unicorn|7a69c6|c7b9ee|ffb2e9
 High Contrast|0000ff|00ff00|ff0000
 Literally Black|010101|000000|010101
+Dark White|ffffff|000000|000000
+Light Black|000000|ffffff|000000
