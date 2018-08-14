@@ -310,6 +310,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK::::
 			JTextField m_keyInput = new JTextField();//Text field for custom keys
 			String[] m_options = {"Custom", "Preset A", "Preset B", "Preset C", "Preset D", "Preset E"};//I'll fix this later
 	        JComboBox m_dropdown = new JComboBox(m_options);
+	        comm.setDropdownAndInput(m_dropdown, m_keyInput);
 			
 			//Add stuff that happens on submit
 			textSubmit.addActionListener(new ActionListener() {

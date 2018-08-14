@@ -10,15 +10,23 @@ public class ChatMessage implements java.io.Serializable {
     
     public ChatMessage(String s, String m) {
         sender = s;
-        message = m;
+        message = ": " + m;
     }
     
     public String toString() {
-        return sender + ": " + message;
+        return sender + message;
     }
     
+	public void encrypt() {
+    	
+    }
+	
+	public void decrypt() {
+		
+	}
+    
     public String getMessage() {
-        return message;
+        return message.substring(2);
     }
     
     public String getSender() {

@@ -25,6 +25,8 @@ public class CommPanel {
     private JTextField input;
     private Socket socket;
     private String name;
+    private JComboBox dropdown;
+    private JTextField ki;
     
     public CommPanel(String n) {
         //Add names and things
@@ -46,6 +48,11 @@ public class CommPanel {
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scroll.setAutoscrolls(true);
         return scroll;
+    }
+    
+    public void setDropdownAndInput(JComboBox c, JTextField i) {
+    	dropdown = c;
+    	ki = i;
     }
     
     public void setInputPanel(JTextField i) {
@@ -107,6 +114,7 @@ public class CommPanel {
         public boolean sendChatMessage(ChatMessage cm) {
             try {
                 ObjectOutputStream output;
+                cm.encrypt();
                 output = new ObjectOutputStream(socket.getOutputStream());
                 output.writeObject(cm);
             }
@@ -140,6 +148,7 @@ public class CommPanel {
                 try {
                     input = new ObjectInputStream(socket.getInputStream());
                     ChatMessage inc = (ChatMessage) input.readObject();
+                    inc.decrypt();
                     chat.displayChatMessage(inc);
                 }
                 catch(Exception e) {
