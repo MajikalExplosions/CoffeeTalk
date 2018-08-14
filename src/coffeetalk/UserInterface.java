@@ -170,22 +170,22 @@ public class UserInterface  {
 		/*
 		 * ****************IMPORTANT*****************
 		 * 
-	      JJJJJJJJJJJ               AAA                       CCCCCCCCCCCCCKKKKKKKKK    KKKKKKK !!!  !!! 
-	      J:::::::::J              A:::A                   CCC::::::::::::CK:::::::K    K:::::K!!:!!!!:!!
-	      J:::::::::J             A:::::A                CC:::::::::::::::CK:::::::K    K:::::K!:::!!:::!
-	      JJ:::::::JJ            A:::::::A              C:::::CCCCCCCC::::CK:::::::K   K::::::K!:::!!:::!
-	        J:::::J             A:::::::::A            C:::::C       CCCCCCKK::::::K  K:::::KKK!:::!!:::!
-	        J:::::J            A:::::A:::::A          C:::::C                K:::::K K:::::K   !:::!!:::!
-	        J:::::J           A:::::A A:::::A         C:::::C                K::::::K:::::K    !:::!!:::!
-	        J:::::j          A:::::A   A:::::A        C:::::C                K:::::::::::K     !:::!!:::!
-	        J:::::J         A:::::A     A:::::A       C:::::C                K:::::::::::K     !:::!!:::!
-JJJJJJJ     J:::::J        A:::::AAAAAAAAA:::::A      C:::::C                K::::::K:::::K    !:::!!:::!
-J:::::J     J:::::J       A:::::::::::::::::::::A     C:::::C                K:::::K K:::::K   !!:!!!!:!!
-J::::::J   J::::::J      A:::::AAAAAAAAAAAAA:::::A     C:::::C       CCCCCCKK::::::K  K:::::KKK !!!  !!! 
-J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK:::::::K   K::::::K          
- JJ:::::::::::::JJ     A:::::A               A:::::A     CC:::::::::::::::CK:::::::K    K:::::K !!!  !!! 
-   JJ:::::::::JJ      A:::::A                 A:::::A      CCC::::::::::::CK:::::::K    K:::::K!!:!!!!:!!
-     JJJJJJJJJ       AAAAAAA                   AAAAAAA        CCCCCCCCCCCCCKKKKKKKKK    KKKKKKK !!!  !!!
+	      JJJJJJJJJJJ               AAA                       CCCCCCCCCCCCC		KKKKKKKKK    KKKKKKK   !!! 	 !!! 
+	      J:::::::::J              A:::A                   CCC::::::::::::C		K:::::::K    K:::::K  !!:!!	!!:!!
+	      J:::::::::J             A:::::A                CC:::::::::::::::C		K:::::::K    K:::::K  !:::!	!:::!
+	      JJ:::::::JJ            A:::::::A              C:::::CCCCCCCC::::C		K:::::::K   K::::::K  !:::!	!:::!
+	        J:::::J             A:::::::::A            C:::::C       CCCCCC		KK::::::K  K:::::KKK  !:::!	!:::!
+	        J:::::J            A:::::A:::::A          C:::::C                		K:::::K K:::::K   !:::!	!:::!
+	        J:::::J           A:::::A A:::::A         C:::::C                		K::::::K:::::K    !:::!	!:::!
+	        J:::::j          A:::::A   A:::::A        C:::::C                		K:::::::::::K     !:::!	!:::!
+	        J:::::J         A:::::A     A:::::A       C:::::C                		K:::::::::::K     !:::!	!:::!
+JJJJJJJ     J:::::J        A:::::AAAAAAAAA:::::A      C:::::C                		K::::::K:::::K    !:::!	!:::!
+J:::::J     J:::::J       A:::::::::::::::::::::A     C:::::C                		K:::::K K:::::K   !!:!!	!!:!!
+J::::::J   J::::::J      A:::::AAAAAAAAAAAAA:::::A     C:::::C       CCCCCC		KK::::::K  K:::::KKK   !!! 	 !!! 
+J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K:::::::K   K::::::K       	   
+ JJ:::::::::::::JJ     A:::::A               A:::::A     CC:::::::::::::::C		K:::::::K    K:::::K   !!! 	 !!! 
+   JJ:::::::::JJ      A:::::A                 A:::::A      CCC::::::::::::C		K:::::::K    K:::::K  !!:!!	!!:!!
+     JJJJJJJJJ       AAAAAAA                   AAAAAAA        CCCCCCCCCCCCC		KKKKKKKKK    KKKKKKK   !!! 	 !!!
 		 * 
 		 * ******************************************
 		 * 
@@ -205,10 +205,16 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK::::
 		case Encoder:
 			//Encoder Page
 			JTextArea outputField = new JTextArea();
+			//outputField.setBackground(theme.getSecondary());
+			//outputField.setOpaque(true);
 			
 			//Add basic outline thing
 			content.setLayout(new GridLayout(3, 1));//3 vertical boxes
 			JPanel input = new JPanel();//Top panel with input
+			
+			
+			
+			
 			JPanel settings = new JPanel();//Middle panel with settings and things
 			JPanel output = new JPanel();//Bottom panel with output
 			
@@ -217,7 +223,19 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK::::
 			input.setLayout(new BorderLayout());//We discussed this right
 			input.add(new JLabel("Message Input"), BorderLayout.SOUTH);//Label at the bottom that says that this is input
 	        JTextArea message = new JTextArea();//Place to type message **IMPORTANT**
+	        
+	        message.setLineWrap(true);
+		    
+		    
+		    //JScrollPane messageInputScroll = new JScrollPane (message);
+		    //   messageInputScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		    //   messageInputScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		    //   messageInputScroll.setAutoscrolls(true);
+		    
+		  
+		       
 	        input.add(message, BorderLayout.CENTER);
+
 	        
 	        
 	        //Add settings
@@ -280,6 +298,19 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::CK::::
 			output.add(new JLabel("Message Output"), BorderLayout.SOUTH);
 	        output.add(outputField, BorderLayout.CENTER);
 	        outputField.setEditable(false);//No editing output field
+	        
+	        
+	        //Add output scrolling
+	        outputField.setLineWrap(true);
+    
+		    //JScrollPane messageOutputScroll = new JScrollPane (outputField);
+		    //   messageOutputScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		    //   messageOutputScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		    //   messageOutputScroll.setAutoscrolls(true);
+	        
+	        
+	        
+	        
 	        
 	        content.add(input);//Add fields to content
 	        content.add(settings);
