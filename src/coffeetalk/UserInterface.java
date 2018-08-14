@@ -223,8 +223,11 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 			
 			
 			
-			JLabel messageInput = new JLabel("Message Input");
-			input.add(messageInput, BorderLayout.SOUTH);
+			JLabel messageInputLabel = new JLabel("Message Input");
+			input.add(messageInputLabel, BorderLayout.SOUTH);
+			
+			messageInputLabel.setBackground(theme.getAccent());
+			
 			
 			
 			
