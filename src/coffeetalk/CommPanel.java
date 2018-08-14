@@ -190,7 +190,7 @@ public class CommPanel {
 	                System.out.println("OOPS");
 	                
 	                ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
-	                System.out.println("OOPS1");
+	                System.out.println(input.readLine());
 	                int newPort = Integer.parseInt(input.readLine());
 	                System.out.println("OOPS2");
 	                socket = new Socket(ip.substring(0, ip.indexOf(":")), newPort);
