@@ -184,7 +184,6 @@ public class CommPanel {
 	            		this.sleep(1);
 	                }
 	                String ip = chat.getChat()[i2].getMessage();
-	                ip += ":58541";
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Attempting to connect to the server..."));
 	                socket = new Socket(ip.substring(0, ip.indexOf(":")), Integer.parseInt(ip.substring(ip.indexOf(":") + 1)));
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Connected!"));
