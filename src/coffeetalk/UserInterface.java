@@ -20,6 +20,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -345,6 +346,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
 	        	//MARKER_1 OfflinePanel
 	        	
 	        	//Set Colour
+	        	content.setBackground(theme.getPrimary());
         		header.setBackground(theme.getSecondary());
         		header.setOpaque(true);
         		footer.setBackground(theme.getSecondary());
@@ -357,6 +359,7 @@ J:::::::JJJ:::::::J     A:::::A             A:::::A     C:::::CCCCCCCC::::C		K::
     			outputField.setForeground(theme.getAccent());
     			outputField.setOpaque(true);
     			keyForm.setBackground(theme.getSecondary());
+    			keyForm.setForeground(theme.getAccent());
     			keyForm.setOpaque(true);
     			submitEncryption.setBackground(theme.getSecondary());
     			submitEncryption.setForeground(theme.getAccent());
