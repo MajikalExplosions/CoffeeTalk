@@ -6,3 +6,4 @@ High Contrast|0000ff|00ff00|ff0000
 Literally Black|010101|000000|010101
 Dark White|ffffff|000000|000000
 Light Black|000000|ffffff|000000
+Demo|111111|777777|ffffff
