@@ -187,23 +187,26 @@ public class CommPanel {
 	                }
 	                String ip = chat.getChat()[i2].getMessage();
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Attempting to connect to the server..."));
-	                socket = new Socket(ip.substring(0, ip.indexOf(":")), Integer.parseInt(ip.substring(ip.indexOf(":") + 1)));
+	                i2 += 2;
 	                
-	                System.out.println("OOPS");
+	                socket = new Socket(ip.substring(0, ip.indexOf(":")), Integer.parseInt(ip.substring(ip.indexOf(":") + 1)));
+	                chat.displayChatMessage(new ChatMessage("[Server]", "Connected to authentication server, waiting for socket..."));
+	                i2++;
 	                
 	                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	                String newPort = input.readLine();
-	                System.out.println("A" + newPort);
-	                System.out.println("OOPS2");
+	                chat.displayChatMessage(new ChatMessage("[Server]", "Recieved socket, waiting for connection..."));
+	                i2++;
+	                
 	                socket.close();
 	                socket = new Socket(ip.substring(0, ip.indexOf(":")), Integer.parseInt(newPort));
-	                System.out.println("OOPS3");
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Connected!"));
+	                i2++;
 	                break;
 	            }
 	            catch(NumberFormatException | NoRouteToHostException | StringIndexOutOfBoundsException | UnknownHostException e2) {
 	            	chat.displayChatMessage(new ChatMessage("[Server]", "IP Invalid."));
-	            	i2 += 4;
+	            	i2 += 2;
 	            	//System.out.println();
 	            	//e2.printStackTrace();
 	            }
