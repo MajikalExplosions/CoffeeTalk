@@ -98,14 +98,23 @@ public class UserInterface  {
             		});
             		
             		//Add footer buttons
+            		
+            		
             		JButton settings = null;
+            		
             		try {
-						settings = new JButton(new ImageIcon(ImageIO.read(new File("data/settings.png")).getScaledInstance(24, 24, Image.SCALE_SMOOTH)));
+						settings = new JButton(new ImageIcon(ImageIO.read(new File("data/settings2.png")).getScaledInstance(24, 24, Image.SCALE_SMOOTH)));
 					} catch (IOException ex) {
 						//Image icon not found?
+						
+						System.out.println("Image not found");
+						System.out.println(" ");
+						
 					}
             		footer.add(settings, BorderLayout.WEST);
             		footer.add(new JLabel(), BorderLayout.CENTER);//Add buffer so button isn't too wide
+            		
+            		
             		
             		//Make button actually do stuff
             		settings.addActionListener(new ActionListener() {
@@ -113,6 +122,8 @@ public class UserInterface  {
 							startPage(Page.Settings);
 						}
             		});
+            		
+            		
             		
             		//Read themes and set default
             		ObjectInputStream inputFile;
