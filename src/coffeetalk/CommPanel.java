@@ -194,12 +194,21 @@ public class CommPanel {
 	                i2++;
 	                
 	                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+<<<<<<< HEAD
 	                String newPort = input.readLine();
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Recieved socket, waiting for connection..."));
 	                i2++;
 	                
 	                socket.close();
 	                socket = new Socket(ip.substring(0, ip.indexOf(":")), Integer.parseInt(newPort));
+=======
+	                System.out.println("A" + input.readLine());
+	                int newPort = Integer.parseInt(input.readLine());
+	                System.out.println("OOPS2");
+	                socket.close();
+	                socket = new Socket(ip.substring(0, ip.indexOf(":")), newPort);
+	                System.out.println("OOPS3");
+>>>>>>> parent of b6ec539... Lol there's nothing here.
 	                chat.displayChatMessage(new ChatMessage("[Server]", "Connected!"));
 	                i2++;
 	                break;
